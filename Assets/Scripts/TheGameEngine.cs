@@ -171,9 +171,11 @@ public class TheGameEngine : MonoBehaviour
                 if (Pos2Del[pt_cnt].x > -1 && Pos2Del[pt_cnt].y > -1) {
                     GameData[Pos2Del[pt_cnt].y][Pos2Del[pt_cnt].x]._chip_obj.SetActive(false);
                     GameData[Pos2Del[pt_cnt].y][Pos2Del[pt_cnt].x]._chip_obj = null;
+                } else {
+                    WhosTurn = (WhosTurn == ColorType.White) ? ColorType.Black : ColorType.White;
                 }
                 ClearSelection();
-                WhosTurn = (WhosTurn == ColorType.White) ? ColorType.Black : ColorType.White;
+                
                 break;
             }
         }

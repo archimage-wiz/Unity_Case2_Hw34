@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\TheGameEngine.cs" />
     <Compile Include="Assets\Scripts\ChipComponent.cs" />
+    <Compile Include="Assets\Scripts\Observer.cs" />
     <Compile Include="Assets\Scripts\CellComponent.cs" />
     <Compile Include="Assets\Scripts\BaseClickComponent.cs" />
   </ItemGroup>

@@ -21,7 +21,6 @@ namespace Checkers
             _game_engine_script.GameData[y][x]._color = GetColor;
             OnClickEventHandler += ChipComponent_OnClickEventHandler;
         }
-
         private void ChipComponent_OnClickEventHandler(BaseClickComponent component) {
             _game_engine_script.SelectCell(x, y);
         }
@@ -33,6 +32,5 @@ namespace Checkers
         {
             _game_engine_script.GameData[y][x]._cell_obj?.GetComponent<CellComponent>()?.OnPointerExit(eventData);
         }
-
     }
 }

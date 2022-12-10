@@ -8,7 +8,6 @@ namespace Checkers
     public class CellComponent : BaseClickComponent
     {
         [SerializeField]  int x, y;
-
         private GameObject _game_engine_obj;
         private TheGameEngine _game_engine_script;
 

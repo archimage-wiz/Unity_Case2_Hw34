@@ -7,25 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Checkers {
     internal class Observer : MonoBehaviour {
-
-        private const string _file_name = "movements_db.txt";
-        //[SerializeField] private GameObject _engine;
-        [SerializeField] private TheGameEngine _engine;
-        [SerializeField] private ObserverMode _mode;
-        //[SerializeField] private bool _play;
-        //private int _current_action_count = 0;
         enum ActionId { select, turn }
         enum ObserverMode { none, record, play }
         private struct ActionZ {
             public ActionId _action;
             public Position _pos;
         }
+        private const string _file_name = "movements_db.txt";
+        [SerializeField] private EventSystem _event_system;
+        [SerializeField] private TheGameEngine _engine;
+        [SerializeField] private ObserverMode _mode;
         private List<ActionZ> ActionsList = new List<ActionZ>();
 
         private void Start() {
+            _event_system.enabled = true;
 
             if (_mode == ObserverMode.record) {
                 if(File.Exists(_file_name)) { File.Delete(_file_name); }
@@ -42,6 +41,7 @@ namespace Checkers {
                     }
                     if(ActionsList.Count > 0) {
                         StartCoroutine(PlayRecord());
+                        _event_system.enabled = false;                     
                     }
                 }
             }

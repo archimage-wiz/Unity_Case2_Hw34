@@ -61,8 +61,14 @@ namespace Checkers {
                         }
                     }
                 }
-                if (WhosTurn == ColorType.Black && _camera_angle < 180) { _camera_angle += Time.deltaTime * _camera_rotation_speed; }
-                if (WhosTurn == ColorType.White && _camera_angle > 0) { _camera_angle -= Time.deltaTime * _camera_rotation_speed; }
+                if (WhosTurn == ColorType.Black && _camera_angle < 180) { 
+                    _camera_angle += Time.deltaTime * _camera_rotation_speed;
+                    _camera_angle = _camera_angle > 180 ? 180 : _camera_angle;
+                }
+                if (WhosTurn == ColorType.White && _camera_angle > 0) { 
+                    _camera_angle -= Time.deltaTime * _camera_rotation_speed;
+                    _camera_angle = _camera_angle < 0 ? 0 : _camera_angle;
+                }
                 _camera_sphere.transform.localRotation = Quaternion.Euler(0, _camera_angle, 0);
                 yield return new WaitForSeconds(0.01f);
             }
